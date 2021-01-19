@@ -149,13 +149,13 @@
             >
             {{ response.message }}
         </v-snackbar>
-        <div>
+        <!-- <div>
         <ul >
             <li v-for="item in addresses" :key="item.id">
                 {{ item }}
             </li>
         </ul>
-        </div>
+        </div> -->
     </div>
 </template>
 
