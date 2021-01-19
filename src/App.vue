@@ -24,7 +24,7 @@
 
 <script>
 import Home from './components/Home'
-require('dotenv').config({path: '../.env'})
+require('dotenv').config({path: '../../.env'})
 
 export default {
   name: 'App',
