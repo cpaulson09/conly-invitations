@@ -1,4 +1,4 @@
-# front-end
+# Conly-Invitations
 
 ## Project setup
 ```
