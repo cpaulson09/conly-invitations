@@ -18,7 +18,7 @@
                 align='center'
                 >
                     <v-img
-                    max-height="450"
+                    max-height="400"
                     max-width="300"
                     src="../assets/conly.jpg"
                     ></v-img>
@@ -51,7 +51,7 @@
                         md="4"
                         >
                             <v-text-field
-                                label="Last Name"
+                                label="Last Name*"
                                 outlined
                                 v-model="lastName"
                                 required
@@ -65,7 +65,7 @@
                         md="4"
                         >
                             <v-text-field
-                                label="Street Address"
+                                label="Street Address*"
                                 outlined
                                 placeholder="1234 address"
                                 v-model="address"
@@ -79,9 +79,9 @@
                         md="4"
                         >
                             <v-text-field
-                                label="City"
+                                label="City*"
                                 outlined
-                                placeholder="City"
+                                placeholder="City*"
                                 v-model="city"
                             ></v-text-field>
                         </v-col>
@@ -93,7 +93,7 @@
                         md="3"
                         >
                             <v-text-field
-                                label="State"
+                                label="State*"
                                 outlined
                                 placeholder="UT"
                                 text
@@ -108,7 +108,7 @@
                         md="3"
                         >
                             <v-text-field
-                                label="Zip / Postal Code"
+                                label="Zip / Postal Code*"
                                 outlined
                                 placeholder="Zip"
                                 text
@@ -117,13 +117,24 @@
                             ></v-text-field>
                         </v-col>
                     </v-row>
-                    <v-row>
+                    <v-row align="center" class="pa-n16">
+                        <v-col
+                        cols="12"
+                        xs="8"
+                        sm="6"
+                        md="4"
+                        >
+                        <p style="color: gray">* - required field </p>
+                        </v-col>
+                    </v-row>
+                    <v-row class="pb-16">
                         <v-col
                         cols="12"
                         xs="3"
                         sm="3"
                         md="2"
                         aligncenter
+                        class="pb-10"
                         >
                             <v-btn
                                 depressed
@@ -144,7 +155,7 @@
             align="center"
             v-model="snackbar"
             :timeout="5000"
-            :color="responseColor"
+            :color="responseBackgroundColor"
             :multi-line="multiLine"
             >
             {{ response.message }}
@@ -173,44 +184,57 @@ export default {
             state: "",
             zip: "" ,
             response: '',
-            responseColor: '',
+            responseBackgroundColor: '',
+            responseTextColor: '',
             multiLine: true,
             snackbar: false,
-            addresses: []   
+            addresses: [],
         }
     },
 
     methods: {
         onSubmit: async function () {
             this.response = ''
-            this.responseColor = ''
+            this.responseBackgroundColor = ''
+            this.responseTextColor = ''
+            // if all fields have a value
+            if ( this.lastName != '' 
+            && this.address != '' 
+            && this.city != '' 
+            && this.state != '' 
+            && this.zip != '' ){
 
-            let data = {
-                firstName: this.firstName,
-                lastName: this.lastName,
-                address: this.address,
-                city: this.city,
-                state: this.state,
-                zip: this.zip
-            }
-            let res = await AddressService.AddAddress(data)
-
-            if (res !== undefined){
-                this.response = res.data
-                if (res.data.status === 'success') {
-                    this.responseColor = 'green'
-                    this.resetFields()
+                let data = {
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    address: this.address,
+                    city: this.city,
+                    state: this.state,
+                    zip: this.zip
                 }
-                else if(res.data.status === 'error') this.responseColor = 'red darken-1'
+                let res = await AddressService.AddAddress(data)
+
+                if (res !== undefined){
+                    this.response = res.data
+                    if (res.data.status === 'success') {
+                        this.responseBackgroundColor = 'green'
+                        this.resetFields()
+                    }
+                    else if(res.data.status === 'error') this.responseBackgroundColor = 'red darken-1'
+                }
+                else {
+                    this.response = {status: "error", message: "Unable to connect to server.\n Refresh the page or try again later."}
+                    this.responseBackgroundColor = 'red darken-1'
+                }
+
+                this.snackbar = true
             }
             else {
-                this.response = {status: "error", message: "Unable to connect to server.\n Refresh the page or try again later."}
-                this.responseColor = 'red darken-1'
+                this.response = {status: "warning", message: "Please fill required (*) fields before submitting"}
+                this.responseBackgroundColor = 'yellow darken-4'
+                this.snackbar = true
             }
-
-            this.snackbar = true
             
-
             // let res2 = await AddressService.getAllAddresses()
             // this.addresses = res2.data
         },
@@ -238,5 +262,5 @@ export default {
 </script>
 
 <style lang="">
-    
+
 </style>

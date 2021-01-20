@@ -1,10 +1,14 @@
+// AddressService - 
+// a middle man service to process front end 
+// requests to api to access Database
+// Vue Component -> Service -> API -> DB
+
 import axios from 'axios'
 const url = process.env.VUE_APP_API_URL
 
 class AddressService {
     // List addresses
     static getAllAddresses = () => {
-        console.log(url)
         return axios.get(url)
         .catch(err => {
             console.log(err)
