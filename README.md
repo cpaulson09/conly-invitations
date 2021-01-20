@@ -1,4 +1,6 @@
-# front-end
+# Conly-Invitations
+
+## View [here](https://connorandailyneedaddresses.vercel.app/#/)
 
 ## Project setup
 ```
