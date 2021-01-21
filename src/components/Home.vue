@@ -17,10 +17,17 @@
                 md="4"
                 align='center'
                 >
+                    <!-- <v-carousel cycle hide-delimiters>
+                        <v-carousel-item
+                        v-for="image in images"
+                        :key="image.alt"
+                        :src="image.src"
+                        ></v-carousel-item>
+                    </v-carousel> -->
                     <v-img
                     max-height="400"
                     max-width="300"
-                    src="../assets/conly.jpg"
+                    src="../assets/conly2.jpeg"
                     ></v-img>
                 </v-col>
                 <v-col
@@ -189,6 +196,10 @@ export default {
             multiLine: true,
             snackbar: false,
             addresses: [],
+            images: [
+                {src: "../assets/conly2.jpeg", alt: "conly1"},
+                {src: "../assets/conly.jpg", alt: "conly2"}
+            ]
         }
     },
 
