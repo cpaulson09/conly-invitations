@@ -25,9 +25,9 @@
                         ></v-carousel-item>
                     </v-carousel> -->
                     <v-img
-                    max-height="400"
+                    max-height="460"
                     max-width="300"
-                    src="../assets/conly2.jpeg"
+                    src="../assets/Conly3.png"
                     ></v-img>
                 </v-col>
                 <v-col
