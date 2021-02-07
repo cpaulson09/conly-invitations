@@ -27,7 +27,7 @@
                     <v-img
                     max-height="460"
                     max-width="300"
-                    src="../assets/Conly3.png"
+                    src="../assets/engagement1.jpeg"
                     ></v-img>
                 </v-col>
                 <v-col
