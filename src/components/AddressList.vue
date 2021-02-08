@@ -1,10 +1,14 @@
 <template>
     <div>
-        <h1>List of Addresses</h1>
-        <!-- <div
-        v-for="(address in addresses" v-bind:key="address.id">
-        {{address.firstName}}
-        </div> -->
+        
+        <h1 style="padding-top: 70px">List of Addresses</h1>
+        <div v-for="address in addresses" v-bind:key="address.id">
+            <p>
+                {{address.firstname}} {{address.lastname}}<br/>
+                {{address.address}}<br/>
+                {{address.city}}, {{address.state}} {{address.zip}}
+            </p>
+        </div>
         
     </div>
 </template>
