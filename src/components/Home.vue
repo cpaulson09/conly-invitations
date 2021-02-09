@@ -1,10 +1,10 @@
 <template lang="">
     <div>
-        <v-container class="mt-6">
+        <v-container class="mt-8">
             <v-row >
                 <v-col align='center'>
 
-                <h1>Submit your information to receive an invitation</h1>
+                <h1 style="padding-top: 70px">Submit your information to receive an invitation</h1>
                 </v-col>
             </v-row>
         </v-container>
